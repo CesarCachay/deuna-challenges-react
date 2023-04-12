@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getPokemons } from '../services';
-import { PokemonType, ErrorStateType } from '../helpers/types';
-import { PokemonCard } from './molecules';
+import { getPokemons } from '@/services';
+import { PokemonType, ErrorStateType } from '@/helpers/types';
+import { PokemonCard } from '@/components/molecules';
+import { FlexContainer, Typography } from "@/components/atoms";
 
-const PokemonList = () => {
+const PokemonList: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<Array<PokemonType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorState, setErrorState] = useState<ErrorStateType>({
@@ -25,8 +26,8 @@ const PokemonList = () => {
   }, []);
 
   return (
-    <div>
-      {errorState.hasError && <div>{errorState.message}</div>}
+    <FlexContainer container>
+      {errorState.hasError && <Typography>{errorState.message}</Typography>}
       {isLoading ? (
         <h1>Loading ...</h1>
       ) : (
@@ -43,7 +44,7 @@ const PokemonList = () => {
           ))}
         </div>
       )}
-    </div>
+    </FlexContainer>
   );
 };
 

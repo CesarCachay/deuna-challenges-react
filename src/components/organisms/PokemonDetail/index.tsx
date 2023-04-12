@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPokemonDetailData } from '../services';
-import { pokemonIdFormatter } from '../helpers/functions';
-import { ErrorStateType } from '../helpers/types';
+import { getPokemonDetailData } from '@/services';
+import { pokemonIdFormatter } from '@/helpers/functions';
+import { ErrorStateType } from '@/helpers/types';
 
-const PokemonDetail = () => {
+const PokemonDetail: React.FC = () => {
   const pathId = useParams();
   const pokemonId = pathId.id;
   const [pokemonData, setPokemonData] = useState<any>({});

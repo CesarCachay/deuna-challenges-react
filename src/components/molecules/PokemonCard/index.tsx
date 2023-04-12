@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexContainer, Card, Typography } from '@/components/atoms';
+import { Card, Typography } from '@/components/atoms';
 import { Link } from 'react-router-dom';
 
 type PokemonCardType = {

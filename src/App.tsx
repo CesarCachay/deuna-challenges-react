@@ -3,8 +3,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/molecules';
 import { About } from './components/layout';
-import PokemonList from './components/PokemonList';
-import PokemonDetail from './components/PokemonDetail';
+import { PokemonList, PokemonDetail } from './components/organisms';
 import theme from './utils/theme';
 
 const App: React.FC = () => {
