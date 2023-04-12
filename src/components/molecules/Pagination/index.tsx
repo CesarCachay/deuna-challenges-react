@@ -41,16 +41,16 @@ const StyledButton = styled.button`
 `;
 
 
-const Pagination: React.FC<PaginationProps> = ({ page, numberOfPages }) => {
+const Pagination: React.FC<PaginationProps> = ({ page, numberOfPages, setPage }) => {
   return (
     <StyledFooter>
       <ButtonsContainer>
-        <Link to={`/pokemons?page=${page - 1}`}>
+        <Link to={`/pokemons?page=${page - 1}`} onClick={() => setPage(page - 1)}>
           <StyledButton disabled={page === 1}>
             Prev
           </StyledButton>
         </Link>
-        <Link to={`/pokemons?page=${page + 1}`}>
+        <Link to={`/pokemons?page=${page + 1}`} onClick={() => setPage(page + 1)}>
           <StyledButton disabled={page === numberOfPages}>
             Next
           </StyledButton>
@@ -60,7 +60,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, numberOfPages }) => {
         <span>{`Page ${page}`}</span>
         {numberOfPages && <span>{`/${numberOfPages}`}</span>}
       </Typography>
-    </StyledFooter>
+    </StyledFooter >
   );
 };
 

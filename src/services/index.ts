@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.VITE_POKEMON_BASE_URL;
 
 export const getPokemons = async (page: number) => {
   try {
-    const offset = page * 20;
+    const offset = (page - 1) * 20;
     const response = await axios.get(`${baseUrl}/?offset=${offset}`);
     const data = response.data
     return data;

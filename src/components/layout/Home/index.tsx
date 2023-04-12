@@ -7,7 +7,7 @@ import { PokemonType, ErrorStateType } from '@/helpers/types';
 import { pokemonFormatter, getNumberOfPages } from '@/helpers/functions';
 
 const Home: React.FC = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState();
   const [pokemonList, setPokemonList] = useState<Array<PokemonType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
       ) : (
         <PokemonList pokemonList={pokemonList} />
       )}
-      <Pagination page={page} numberOfPages={numberOfPages} />
+      <Pagination page={page} numberOfPages={numberOfPages} setPage={setPage} />
     </FlexContainer>
   );
 };
