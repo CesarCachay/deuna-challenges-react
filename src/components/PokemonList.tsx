@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import { PokemonType, getPokemons } from '../services';
-
-type ErrorStateType = {
-  hasError: boolean;
-  message: null | string;
-}
+import { PokemonType, ErrorStateType, getPokemons } from '../services';
+import { Link } from 'react-router-dom';
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState<Array<PokemonType>>([]);
@@ -37,8 +33,10 @@ const PokemonList = () => {
           {pokemonList.length > 0 && pokemonList.map(pokemon => (
             <div key={pokemon.id}>
               <div>{pokemon.name}</div>
-              <div>{pokemon.id}</div>
-              <img src={pokemon.picture} alt={pokemon.name} />
+              <div>{pokemon.parsedId}</div>
+              <Link to={`/pokemon/${pokemon.id}`}>
+                <img src={pokemon.picture} alt={pokemon.name} />
+              </Link>
             </div>
           ))}
         </div>

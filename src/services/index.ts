@@ -4,12 +4,18 @@ const baseUrl = import.meta.env.VITE_POKEMON_BASE_URL;
 
 export type PokemonType = {
   id: string;
+  parsedId: string;
   name: string;
   url: string;
   picture: string;
 }
 
-const pokemonIdFormatter = (pokemonId: string) => {
+export type ErrorStateType = {
+  hasError: boolean;
+  message: null | string;
+}
+
+export const pokemonIdFormatter = (pokemonId: string) => {
   const formattedId = Number(pokemonId);
   if (formattedId <= 9) return `#000${pokemonId}`;
   if (formattedId <= 99) return `#00${pokemonId}`;
@@ -23,7 +29,8 @@ const pokemonFormatter = (pokemonList: Array<PokemonType>) => {
     const pokemonId = pokemonData.url.split('/')[6];
     const getPicture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
     return {
-      id: pokemonIdFormatter(pokemonId),
+      id: pokemonId,
+      parsedId: pokemonIdFormatter(pokemonId),
       name,
       url,
       picture: getPicture
@@ -41,3 +48,13 @@ export const getPokemons = async () => {
     console.error(error);
   }
 };
+
+export const getPokemonDetailData = async (pokemonId: string) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${pokemonId}/`);
+    const pokemonData = response.data;
+    return pokemonData;
+  } catch (error) {
+    console.error(error);
+  }
+}
