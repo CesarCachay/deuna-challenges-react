@@ -1,4 +1,4 @@
-import spinnerImage from 'assets/spinner.gif';
+import spinnerImage from '@/assets/spinner.gif';
 
 const Spinner: React.FC = () => {
   return (
