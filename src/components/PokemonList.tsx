@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { PokemonType, ErrorStateType, getPokemons } from '../services';
+import { getPokemons } from '../services';
+import { PokemonType, ErrorStateType } from '../helpers/types';
 import { Link } from 'react-router-dom';
 
 const PokemonList = () => {

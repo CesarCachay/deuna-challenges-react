@@ -4,29 +4,20 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "prettier/react"
-  ],
-  "plugins": [
-    "jsx-a11y",
     "prettier"
   ],
+  "plugins": ["jsx-a11y", "prettier"],
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ],
-        "paths": [
-          "src"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
       }
     }
   },
   "rules": {
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": "off",
     "semi": 0,
     "react/prop-types": 0,
     "react-hooks/exhaustive-deps": 0,
@@ -34,22 +25,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          "tsx"
-        ]
-      }
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": true,
-        "jsxSingleQuote": true,
-        "singleQuote": true,
-        "htmlWhitespaceSensitivity": "ignore",
-        "trailingComma": "es5"
+        "extensions": [".js", ".jsx", ".ts", "tsx"]
       }
     ]
   }
