@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPokemons } from '@/services';
 import { PokemonType, ErrorStateType } from '@/helpers/types';
 import { PokemonCard } from '@/components/molecules';
 import { FlexContainer, Typography } from "@/components/atoms";
+import styled from 'styled-components';
+
+const PokemonListContainer = styled(FlexContainer)`
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+`;
 
 const PokemonList: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<Array<PokemonType>>([]);
@@ -26,25 +34,25 @@ const PokemonList: React.FC = () => {
   }, []);
 
   return (
-    <FlexContainer container>
+    <PokemonListContainer container>
       {errorState.hasError && <Typography>{errorState.message}</Typography>}
       {isLoading ? (
         <h1>Loading ...</h1>
       ) : (
-        <div>
+        <React.Fragment>
           {pokemonList.length > 0 && pokemonList.map(pokemon => (
-            <div key={pokemon.id}>
+            <React.Fragment key={pokemon.id}>
               <PokemonCard
                 name={pokemon.name}
                 parsedId={pokemon.parsedId}
                 id={pokemon.id}
                 picture={pokemon.picture}
               />
-            </div>
+            </React.Fragment>
           ))}
-        </div>
+        </React.Fragment>
       )}
-    </FlexContainer>
+    </PokemonListContainer>
   );
 };
 
