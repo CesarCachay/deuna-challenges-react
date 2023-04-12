@@ -35,13 +35,13 @@ const StyledPokemonImage = styled.img`
 
 const PokemonCard: React.FC<PokemonCardType> = ({ name, parsedId, id, picture }) => {
   return (
-    <StyledPokemonCard shadowLow width='300px'>
-      <Link to={`/pokemon/${id}`} >
+    <Link to={`/pokemon/${id}`} >
+      <StyledPokemonCard shadowLow width='300px'>
         <StyledPokemonImage src={picture} alt={name} />
-      </Link>
-      <Typography>{parsedId}</Typography>
-      <Typography>{name}</Typography>
-    </StyledPokemonCard>
+        <Typography>{parsedId}</Typography>
+        <Typography>{name}</Typography>
+      </StyledPokemonCard>
+    </Link>
   );
 };
 

@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { pokemonFormatter } from '../helpers/functions';
 
 const baseUrl = import.meta.env.VITE_POKEMON_BASE_URL;
 
-export const getPokemons = async () => {
+export const getPokemons = async (page: number) => {
   try {
-    const response = await axios.get(baseUrl);
-    const pokemons = response.data.results;
-    return pokemonFormatter(pokemons);
+    const offset = page * 20;
+    const response = await axios.get(`${baseUrl}/?offset=${offset}`);
+    const data = response.data
+    return data;
   } catch (error) {
     console.error(error);
   }

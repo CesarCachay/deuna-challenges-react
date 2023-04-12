@@ -1,5 +1,7 @@
 import { PokemonType } from "./types";
 
+export const getNumberOfPages = (count: number) => Math.ceil(count / 20);
+
 export const pokemonIdFormatter = (pokemonId: string) => {
   const formattedId = Number(pokemonId);
   if (formattedId <= 9) return `#000${pokemonId}`;
@@ -18,8 +20,9 @@ export const pokemonFormatter = (pokemonList: Array<PokemonType>) => {
       parsedId: pokemonIdFormatter(pokemonId),
       name,
       url,
-      picture: getPicture
+      picture: getPicture,
     }
   })
   return formattedArray;
 };
+

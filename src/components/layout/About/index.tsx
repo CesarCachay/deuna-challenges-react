@@ -39,7 +39,7 @@ const jobExperiences = [
 
 const JobExperience: React.FC<JobExperienceProps> = ({ alt, companyLogo, jobPosition, techStack }) => (
   <FlexContainer
-    width='500px'
+    width='400px'
     direction='column'
     padding='20px'
     margin='10px 0 20px 0'
@@ -49,7 +49,7 @@ const JobExperience: React.FC<JobExperienceProps> = ({ alt, companyLogo, jobPosi
       <Typography margin='0 15px 0 0'>Company:</Typography>
       <img
         src={companyLogo}
-        style={{ width: '150px', margin: '30px 0' }}
+        style={{ width: '150px', margin: '20px 0' }}
         alt={alt}
       />
     </FlexContainer>
@@ -62,7 +62,7 @@ const JobExperience: React.FC<JobExperienceProps> = ({ alt, companyLogo, jobPosi
 
 const About: React.FC<{ path: string }> = () => {
   return (
-    <FlexContainer container justify='center'>
+    <FlexContainer container justify='center' bgColor='#fff'>
       <FlexContainer
         width='80%'
         justify='center'
