@@ -43,7 +43,12 @@ const PokemonTypePill = styled(FlexContainer) <{ customColor: string }>`
   }
 `;
 
-const PokemonProfile: React.FC<PokemonProfileProps> = ({ name, id, pokemonPicture, types }) => {
+const PokemonProfile: React.FC<PokemonProfileProps> = ({
+  name,
+  id,
+  pokemonPicture,
+  types
+}) => {
   return (
     <ComponentContainer
       container

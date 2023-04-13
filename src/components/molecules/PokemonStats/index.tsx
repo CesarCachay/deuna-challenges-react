@@ -1,0 +1,58 @@
+import React from 'react';
+import styled from 'styled-components';
+import { PokemonStatsProps, StatsType } from './types';
+import { FlexContainer, Typography } from '@/components/atoms';
+import theme from '@/utils/theme';
+
+const ComponentContainer = styled(FlexContainer)`
+  border-radius: 10px;
+
+  @media (max-width: 480px) {
+    width: 80%;
+  }
+`
+
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 9
+`;
+
+const StyledListItem = styled.li`
+  color: #fff;
+  font-size: 20px;
+  margin: 4px;
+  padding: 0;
+`;
+
+const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }) => {
+  return (
+    <ComponentContainer
+      width='100%'
+      padding='20px'
+      margin='20px 0'
+      bgColor='#495057'
+      borderColor={theme.colors.darkBgColor}
+    >
+      <FlexContainer width='50%' direction='column'>
+        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+          Base Experience
+        </Typography>
+        <Typography color='#fff' fontSize='20px'>{baseExperience}</Typography>
+      </FlexContainer>
+      <FlexContainer width='50%' direction='column'>
+        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+          Stats
+        </Typography>
+        <StyledList>
+          {statsList.map((stats: StatsType) => (
+            <StyledListItem key={stats.stat.name}>
+              {stats.stat.name}: {stats.base_stat}
+            </StyledListItem>
+          ))}
+        </StyledList>
+      </FlexContainer>
+    </ComponentContainer>
+  );
+};
+
+export default PokemonStats;

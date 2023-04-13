@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPokemonDetailData } from '@/services';
 import { FlexContainer } from '@/components/atoms';
 import { ErrorStateType } from '@/helpers/types';
-import { PokemonInformation, PokemonProfile } from '@/components/molecules';
+import { PokemonInformation, PokemonProfile, PokemonStats } from '@/components/molecules';
 import styled from 'styled-components';
 
 const DataContainer = styled(FlexContainer)`
@@ -61,20 +61,19 @@ const PokemonDetail: React.FC = () => {
               types={pokemonData.types}
             />
           </DataContainer>
-          <DataContainer width='50%'>
+          <DataContainer width='50%' direction='column'>
             <PokemonInformation
               height={pokemonData.height}
               weight={pokemonData.weight}
               abilities={pokemonData.abilities}
               moves={pokemonData.moves}
             />
-            {/* <Typography>Stats</Typography>
-            {pokemonData.stats.map(data => (
-              <div key={data.stat.name}>
-                <div>{data.base_stat}</div>
-                <div>{data.stat.name}</div>
-              </div>
-            ))} */}
+            <DataContainer width='100%' direction='column'>
+              <PokemonStats
+                statsList={pokemonData.stats}
+                baseExperience={pokemonData.base_experience}
+              />
+            </DataContainer>
           </DataContainer>
         </FlexContainer>
       )
