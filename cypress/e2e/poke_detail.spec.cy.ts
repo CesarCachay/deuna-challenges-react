@@ -5,10 +5,6 @@ describe('Pokemon List App', () => {
     cy.visit('http://localhost:5173/pokemon/1')
   })
 
-  it('Pokemon detail page opened properly and can click on the go back button', () => {
-    cy.contains('Go back')
-  })
-
   it('Pokemon detail page should show loading while fetching', () => {
     cy.get('[data-cy="loading-text"]').should('contain', 'Loading pokemon detail ...')
   })

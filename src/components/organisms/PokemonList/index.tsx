@@ -4,6 +4,7 @@ import { FlexContainer } from "@/components/atoms";
 import styled from 'styled-components';
 
 const PokemonListContainer = styled(FlexContainer)`
+  padding-top: 20px;
   background-color: #fff;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

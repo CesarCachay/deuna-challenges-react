@@ -4,7 +4,7 @@ import { getPokemonDetailData } from '@/services';
 import { FlexContainer, Typography } from '@/components/atoms';
 import { ErrorStateType } from '@/helpers/types';
 import styled from 'styled-components';
-import { PokemonProfile } from '@/components/molecules';
+import { PokemonInformation, PokemonProfile } from '@/components/molecules';
 import theme from '@/utils/theme';
 
 const PokemonDetail: React.FC = () => {
@@ -40,7 +40,6 @@ const PokemonDetail: React.FC = () => {
       justify='center'
       alignItems='center'
     >
-      <Link to='/'>Go back</Link>
       {errorData.hasError && <div>{errorData.message}</div>}
       {isLoading ? (
         <div data-cy='loading-text'>Loading pokemon detail ...</div>
@@ -55,27 +54,20 @@ const PokemonDetail: React.FC = () => {
             />
           </FlexContainer>
           <FlexContainer width='50%'>
-            <Typography>Height</Typography>
-            <span>{pokemonData.height}</span>
-            <Typography>Weight</Typography>
-            <span>{pokemonData.weight}</span>
-            <Typography>Abilities</Typography>
-            {pokemonData.abilities.map(data => (
-              <div key={data.slot}>
-                <div>{data.ability.name}</div>
-              </div>
-            ))}
-            <Typography>Stats</Typography>
+            <PokemonInformation
+              height={pokemonData.height}
+              weight={pokemonData.weight}
+              abilities={pokemonData.abilities}
+              is_default={pokemonData.is_default}
+              moves={pokemonData.moves}
+            />
+            {/* <Typography>Stats</Typography>
             {pokemonData.stats.map(data => (
               <div key={data.stat.name}>
                 <div>{data.base_stat}</div>
                 <div>{data.stat.name}</div>
               </div>
-            ))}
-            <Typography>Moves</Typography>
-            {pokemonData.moves.map(data => (
-              <div key={data.move.name}>{data.move.name}</div>
-            ))}
+            ))} */}
           </FlexContainer>
         </FlexContainer>
       )
