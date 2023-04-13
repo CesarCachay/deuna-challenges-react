@@ -44,6 +44,7 @@ const JobExperience: React.FC<JobExperienceProps> = ({ alt, companyLogo, jobPosi
     padding='20px'
     margin='10px 0 20px 0'
     borderColor={theme.colors.borderColor}
+    resWidth='250px'
   >
     <FlexContainer alignItems='center'>
       <Typography margin='0 15px 0 0'>Company:</Typography>
@@ -62,7 +63,7 @@ const JobExperience: React.FC<JobExperienceProps> = ({ alt, companyLogo, jobPosi
 
 const About: React.FC<{ path: string }> = () => {
   return (
-    <FlexContainer container justify='center' bgColor='#fff'>
+    <FlexContainer container justify='center' bgColor='#fff' >
       <FlexContainer
         width='80%'
         justify='center'
@@ -70,12 +71,14 @@ const About: React.FC<{ path: string }> = () => {
         margin='20px 0'
         padding='20px'
         borderColor={theme.colors.borderColor}
+        resDirection='column'
       >
         <FlexContainer
           direction='column'
           justify='center'
           alignItems='center'
           width='50%'
+          resWidth='100%'
         >
           <img
             src={profilePhoto}
@@ -99,7 +102,7 @@ const About: React.FC<{ path: string }> = () => {
             By Cesar Cachay
           </Typography>
         </FlexContainer>
-        <FlexContainer direction='column' width='50%'>
+        <FlexContainer direction='column' width='50%' resWidth='100%'>
           <Typography fontSize='22px' fontWeight={700} margin='10px 0'>
             Working Experience
           </Typography>

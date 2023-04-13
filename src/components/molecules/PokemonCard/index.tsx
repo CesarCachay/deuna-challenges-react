@@ -26,6 +26,10 @@ const StyledPokemonCard = styled(Card)`
     transition: 0.5s;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
+
+  @media (max-width: 400px) {
+    width: 250px;
+  }
 `;
 
 const StyledPokemonImage = styled.img`

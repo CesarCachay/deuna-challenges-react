@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FlexContainer } from '../../atoms';
+import { FlexContainer } from '@/components/atoms';
 import { Link } from 'react-router-dom';
-import theme from '../../../utils/theme';
+import theme from '@/utils/theme';
 
 const NavbarContainer = styled(FlexContainer)`
   padding: 20px 10px;
   width: 100%;
   opacity: 0.9;
   font-size: 28px;
+
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledLink = styled(Link)`

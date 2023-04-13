@@ -7,6 +7,18 @@ import theme from '@/utils/theme';
 const ComponentContainer = styled(FlexContainer)`
   border-radius: 10px;
 `
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 9
+`;
+
+const StyledListItem = styled.li`
+  color: #fff;
+  font-size: 20px;
+  margin: 4px;
+  padding: 0;
+`;
+
 const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
   const { height, weight, abilities, moves } = props || {};
 
@@ -33,7 +45,7 @@ const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
           Height
         </Typography>
         <Typography color='#fff' fontSize='20px'>{heightFormatter(height)}</Typography>
-        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='55px 0 15px 0'>
           Weight
         </Typography>
         <Typography color='#fff' fontSize='20px'>{weightFormatter(weight)}</Typography>
@@ -42,20 +54,19 @@ const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Abilities
         </Typography>
-        {abilities.map(data => (
-          <Typography color='#fff' fontSize='20px' key={data.slot} margin='0 0 0 4px'>
-            {data.ability.name}
-          </Typography>
-        ))}
+        <StyledList>
+          {abilities.map(data => (
+            <StyledListItem key={data.ability.name}>{data.ability.name}</StyledListItem>
+          ))}
+        </StyledList>
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Moves
         </Typography>
-
-        {moves.slice(0, 4).map(data => (
-          <Typography color='#fff' fontSize='20px' key={data.slot} margin='0 0 0 4px'>
-            {data.move.name}
-          </Typography>
-        ))}
+        <StyledList>
+          {moves.slice(0, 4).map(data => (
+            <StyledListItem key={data.move.name}>{data.move.name}</StyledListItem>
+          ))}
+        </StyledList>
       </FlexContainer>
     </ComponentContainer>
   );

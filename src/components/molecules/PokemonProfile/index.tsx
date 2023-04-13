@@ -6,11 +6,20 @@ import theme from '@/utils/theme';
 
 const ComponentContainer = styled(FlexContainer)`
   border-radius: 10px;
+
+  @media (max-width: 480px) {
+    width: 80%;
+  }
 `
 
 const StyledPokemonImage = styled.img`
   width: 400px;
-  height: 400px
+  height: 400px;
+
+  @media (max-width: 480px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const InformationContainer = styled(FlexContainer)`
@@ -28,6 +37,10 @@ const PokemonTypePill = styled(FlexContainer) <{ customColor: string }>`
   justify-content: center;
   border-radius: 10px;
   background-color: ${(props) => props.customColor};
+
+  @media (max-width: 420px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const PokemonProfile: React.FC<PokemonProfileProps> = ({ name, id, pokemonPicture, types }) => {
@@ -64,9 +77,12 @@ const PokemonProfile: React.FC<PokemonProfileProps> = ({ name, id, pokemonPictur
           src={pokemonPicture}
           alt={name}
         />
-        <FlexContainer width='95%' justify='space-around'>
+        <FlexContainer width='95%' justify='space-around' resDirection='column' resAlignItems='center'>
           {types.map((pokemonType: PokemonDataTypes) => (
-            <PokemonTypePill key={pokemonType.slot} customColor={getColorPokemonType(pokemonType.type.name)}>
+            <PokemonTypePill
+              key={pokemonType.slot}
+              customColor={getColorPokemonType(pokemonType.type.name)}
+            >
               <Typography
                 fontSize='20px'
                 fontWeight={700}

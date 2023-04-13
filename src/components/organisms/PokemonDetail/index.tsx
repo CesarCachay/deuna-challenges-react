@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPokemonDetailData } from '@/services';
-import { FlexContainer, Typography } from '@/components/atoms';
+import { FlexContainer } from '@/components/atoms';
 import { ErrorStateType } from '@/helpers/types';
-import styled from 'styled-components';
 import { PokemonInformation, PokemonProfile } from '@/components/molecules';
-import theme from '@/utils/theme';
+import styled from 'styled-components';
+
+const DataContainer = styled(FlexContainer)`
+@media (max-width: 400px) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%
+}
+`;
 
 const PokemonDetail: React.FC = () => {
   const pathId = useParams();
@@ -44,21 +52,20 @@ const PokemonDetail: React.FC = () => {
       {isLoading ? (
         <div data-cy='loading-text'>Loading pokemon detail ...</div>
       ) : (
-        <FlexContainer width='90%'>
-          <FlexContainer width='50%'>
+        <FlexContainer width='90%' resDirection='column'>
+          <DataContainer width='50%'>
             <PokemonProfile
               id={pokemonData.id}
               name={pokemonData.name}
               pokemonPicture={pokemonData.sprites?.other['official-artwork'].front_default}
               types={pokemonData.types}
             />
-          </FlexContainer>
-          <FlexContainer width='50%'>
+          </DataContainer>
+          <DataContainer width='50%'>
             <PokemonInformation
               height={pokemonData.height}
               weight={pokemonData.weight}
               abilities={pokemonData.abilities}
-              is_default={pokemonData.is_default}
               moves={pokemonData.moves}
             />
             {/* <Typography>Stats</Typography>
@@ -68,7 +75,7 @@ const PokemonDetail: React.FC = () => {
                 <div>{data.stat.name}</div>
               </div>
             ))} */}
-          </FlexContainer>
+          </DataContainer>
         </FlexContainer>
       )
       }
