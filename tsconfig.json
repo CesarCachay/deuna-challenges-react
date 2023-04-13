@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -17,7 +21,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "./cypress.d.ts"],
+  "include": ["src", "src/**/*.ts", "@types/**/*.d.ts", "./cypress.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

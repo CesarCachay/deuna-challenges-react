@@ -8,7 +8,7 @@ import { pokemonFormatter, getNumberOfPages } from '@/helpers/functions';
 
 const Home: React.FC = () => {
   const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState();
+  const [numberOfPages, setNumberOfPages] = useState<number | undefined>();
   const [pokemonList, setPokemonList] = useState<Array<PokemonType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorState, setErrorState] = useState<ErrorStateType>({

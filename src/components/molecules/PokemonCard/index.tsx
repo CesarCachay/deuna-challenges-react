@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Card, FlexContainer } from '@/components/atoms';
+import { formatPokemonName } from '@/helpers/functions';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -33,11 +34,6 @@ const StyledPokemonImage = styled.img`
 `;
 
 const PokemonCard: React.FC<PokemonCardType> = ({ name, parsedId, id, picture }) => {
-  const formatPokemonName = (name: string) => {
-    const formatted = name.charAt(0).toUpperCase() + name.slice(1);
-    return formatted;
-  };
-
   return (
     <Link to={`/pokemon/${id}`} >
       <StyledPokemonCard shadowLow width='300px'>
