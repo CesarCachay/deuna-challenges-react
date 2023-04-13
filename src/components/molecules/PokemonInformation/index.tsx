@@ -8,7 +8,7 @@ const ComponentContainer = styled(FlexContainer)`
   border-radius: 10px;
 `
 const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
-  const { height, weight, abilities, is_default, moves } = props || {};
+  const { height, weight, abilities, moves } = props || {};
 
   const weightFormatter = (weight: number) => {
     const formatted = weight / 10;
@@ -32,22 +32,29 @@ const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Height
         </Typography>
-        <Typography>{heightFormatter(height)}</Typography>
+        <Typography color='#fff' fontSize='20px'>{heightFormatter(height)}</Typography>
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Weight
         </Typography>
-        <Typography>{weightFormatter(weight)}</Typography>
+        <Typography color='#fff' fontSize='20px'>{weightFormatter(weight)}</Typography>
       </FlexContainer>
       <FlexContainer width='50%' direction='column'>
-        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
-          Is Default
-        </Typography>
-        <Typography>{is_default ? 'Yes' : 'No'}</Typography>
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Abilities
         </Typography>
         {abilities.map(data => (
-          <Typography key={data.slot}>{data.ability.name}</Typography>
+          <Typography color='#fff' fontSize='20px' key={data.slot} margin='0 0 0 4px'>
+            {data.ability.name}
+          </Typography>
+        ))}
+        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+          Moves
+        </Typography>
+
+        {moves.slice(0, 4).map(data => (
+          <Typography color='#fff' fontSize='20px' key={data.slot} margin='0 0 0 4px'>
+            {data.move.name}
+          </Typography>
         ))}
       </FlexContainer>
     </ComponentContainer>

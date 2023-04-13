@@ -13,7 +13,7 @@ const PokemonListContainer = styled(FlexContainer)`
 
 const PokemonList: React.FC = ({ pokemonList }) => {
   return (
-    <PokemonListContainer container>
+    <PokemonListContainer container data-cy='pokemon-list'>
       {pokemonList.length > 0 && pokemonList.map(pokemon => (
         <React.Fragment key={pokemon.id}>
           <PokemonCard

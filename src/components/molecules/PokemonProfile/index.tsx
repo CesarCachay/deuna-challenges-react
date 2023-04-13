@@ -46,6 +46,7 @@ const PokemonProfile: React.FC<PokemonProfileProps> = ({ name, id, pokemonPictur
             fontWeight={700}
             textAlign='center'
             margin='10px 0'
+            data-cy="pokemon-name-text"
           >
             Name: {formatPokemonName(name)}
           </Typography>

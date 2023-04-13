@@ -46,17 +46,17 @@ const Pagination: React.FC<PaginationProps> = ({ page, numberOfPages, setPage })
     <StyledFooter>
       <ButtonsContainer>
         <Link to={`/pokemons?page=${page - 1}`} onClick={() => setPage(page - 1)}>
-          <StyledButton disabled={page === 1}>
+          <StyledButton disabled={page === 1} data-cy="prev-button-option">
             Prev
           </StyledButton>
         </Link>
         <Link to={`/pokemons?page=${page + 1}`} onClick={() => setPage(page + 1)}>
-          <StyledButton disabled={page === numberOfPages}>
+          <StyledButton disabled={page === numberOfPages} data-cy="next-button-option">
             Next
           </StyledButton>
         </Link>
       </ButtonsContainer>
-      <Typography fontWeight='700' margin='10px 0 20px 0'>
+      <Typography fontWeight={700} margin='10px 0 20px 0'>
         <span>{`Page ${page}`}</span>
         {numberOfPages && <span>{`/${numberOfPages}`}</span>}
       </Typography>
