@@ -17,6 +17,7 @@ const Home: React.FC = () => {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     getPokemons(page)
       .then(res => {
         if (res) {
@@ -32,7 +33,6 @@ const Home: React.FC = () => {
         setErrorState({ hasError: true, message: err.message });
       })
   }, [page]);
-
 
   return (
     <FlexContainer

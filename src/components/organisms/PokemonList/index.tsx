@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getPokemons } from '@/services';
-import { PokemonType, ErrorStateType } from '@/helpers/types';
+import React from 'react';
 import { PokemonCard } from '@/components/molecules';
-import { FlexContainer, Typography } from "@/components/atoms";
+import { FlexContainer } from "@/components/atoms";
 import styled from 'styled-components';
 
 const PokemonListContainer = styled(FlexContainer)`

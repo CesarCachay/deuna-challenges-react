@@ -8,7 +8,6 @@ const NavbarContainer = styled(FlexContainer)`
   padding: 20px 10px;
   width: 100%;
   opacity: 0.9;
-  margin-bottom: 25px;
   font-size: 28px;
 `;
 

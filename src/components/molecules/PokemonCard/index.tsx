@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Card } from '@/components/atoms';
+import { Typography, Card, FlexContainer } from '@/components/atoms';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -32,14 +32,20 @@ const StyledPokemonImage = styled.img`
   height: 100px;
 `;
 
-
 const PokemonCard: React.FC<PokemonCardType> = ({ name, parsedId, id, picture }) => {
+  const formatPokemonName = (name: string) => {
+    const formatted = name.charAt(0).toUpperCase() + name.slice(1);
+    return formatted;
+  };
+
   return (
     <Link to={`/pokemon/${id}`} >
       <StyledPokemonCard shadowLow width='300px'>
         <StyledPokemonImage src={picture} alt={name} />
-        <Typography>{parsedId}</Typography>
-        <Typography>{name}</Typography>
+        <FlexContainer width='85%' justify='space-around'>
+          <Typography>{parsedId}</Typography>
+          <Typography>{formatPokemonName(name)}</Typography>
+        </FlexContainer>
       </StyledPokemonCard>
     </Link>
   );
