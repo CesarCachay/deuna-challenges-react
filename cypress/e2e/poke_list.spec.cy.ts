@@ -2,7 +2,7 @@
 
 describe('Pokemon List App', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173/pokemons?page=1')
+    cy.visit('http://localhost:3000/pokemons?page=1')
   })
 
   it('frontpage can be opened and work properly', () => {
@@ -34,7 +34,7 @@ describe('Pokemon List App', () => {
 
 describe('After clicking next page', () => {
   it('after going to page 2 should request next 20 pokemons', () => {
-    cy.visit('http://localhost:5173/pokemons?page=1')
+    cy.visit('http://localhost:3000/pokemons?page=1')
     cy.get('[data-cy="pokemon-list"]').should('be.visible')
     cy.get('[data-cy="next-button-option"]').click()
     cy.intercept({ pathname: 'https://pokeapi.co/api/v2/pokemon/?offset=20', method: 'GET' })
@@ -43,7 +43,7 @@ describe('After clicking next page', () => {
   })
 
   it('after going to page 2, user selects Nidoqueen and should see their details', () => {
-    cy.visit('http://localhost:5173/pokemons?page=1')
+    cy.visit('http://localhost:3000/pokemons?page=1')
     cy.get('[data-cy="pokemon-list"]').should('be.visible')
     cy.get('[data-cy="next-button-option"]').click()
     cy.intercept({ pathname: 'https://pokeapi.co/api/v2/pokemon/?offset=20', method: 'GET' })

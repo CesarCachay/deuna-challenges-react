@@ -1,5 +1,20 @@
 [<img src="https://uploads-ssl.webflow.com/62e806ed6cc7b20ca6dc2b93/62fca8262c51370eb1406a98_deuna_w.png" width="300">](https://uploads-ssl.webflow.com/62e806ed6cc7b20ca6dc2b93/62fca8262c51370eb1406a98_deuna_w.png)
 
+# To start the project locally without Docker you have to clone the repo and run the following command:
+
+- npm run dev
+- Go to http://localhost:3000/
+
+# To run the e2e tests with cypress run the following command:
+
+- npm run cypress:open
+
+# To start the project using Docker (please make sure you have installed Docker & docker-compose) and run the following comand:
+
+- docker build -t poke-api-challenge:prod .
+- docker run -p 3000:80 poke-api-challenge:prod
+- Go to http://localhost:3000/
+
 # React Junior Challenge
 
 ## 👩‍💻 Proyect Overview
