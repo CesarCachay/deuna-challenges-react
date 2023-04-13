@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Pokemon List App', () => {
+describe('Pokemon Detail Page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173/pokemon/1')
   })
@@ -12,6 +12,14 @@ describe('Pokemon List App', () => {
   it('Pokemon detail page show the pokemon types', () => {
     cy.contains('Height')
     cy.contains('Weight')
+  })
+
+  it('should show moves of the pokemon of PokemonInformation component', () => {
+    cy.contains('Moves')
+  })
+
+  it('should show the base experience of PokemonStats component', () => {
+    cy.contains('Base Experience')
   })
 
   it('should request pokeapi to retrieve data of selected pokemon', () => {
@@ -33,5 +41,22 @@ describe('Pokemon List App', () => {
     cy.wait(['@getPokemons'])
     cy.get('@getPokemons').should('have.property', 'response')
     cy.get('h2').first().contains('#0001')
+  })
+})
+
+describe('Complete flow of pokemon detail app', () => {
+  it('Pokemon detail app changing from one pokemon to another', () => {
+    cy.visit('http://localhost:5173/pokemon/1')
+    cy.wait(1000)
+    cy.contains('DEUNA React Challenge').click()
+    cy.visit('http://localhost:5173/pokemons?page=1')
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/?offset=0').as('fetchPokemons')
+    cy.wait(['@fetchPokemons'])
+    cy.contains('Charizard').should('exist')
+    cy.contains('Charizard').click()
+    cy.visit('http://localhost:5173/pokemon/6')
+    cy.wait(1000)
+    cy.request('GET', 'https://pokeapi.co/api/v2/pokemon/6/')
+    cy.contains('hp: 78').should('be.visible')
   })
 })

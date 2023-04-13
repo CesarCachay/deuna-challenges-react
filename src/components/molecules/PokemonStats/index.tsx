@@ -34,7 +34,14 @@ const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }
       borderColor={theme.colors.darkBgColor}
     >
       <FlexContainer width='50%' direction='column'>
-        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+        <Typography
+          color='#fff'
+          fontSize='24px'
+          fontWeight={700}
+          textAlign='center'
+          margin='10px 0'
+          data-test-id="pokemon-experience"
+        >
           Base Experience
         </Typography>
         <Typography color='#fff' fontSize='20px'>{baseExperience}</Typography>

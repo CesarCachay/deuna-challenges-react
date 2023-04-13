@@ -59,7 +59,14 @@ const PokemonInformation: React.FC<PokemonInformationProps> = (props) => {
             <StyledListItem key={data.ability.name}>{data.ability.name}</StyledListItem>
           ))}
         </StyledList>
-        <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
+        <Typography
+          color='#fff'
+          fontSize='24px'
+          fontWeight={700}
+          textAlign='center'
+          margin='10px 0'
+          data-test-id="pokemon-moves-text"
+        >
           Moves
         </Typography>
         <StyledList>

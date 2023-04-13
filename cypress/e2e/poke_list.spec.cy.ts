@@ -42,7 +42,7 @@ describe('After clicking next page', () => {
     cy.contains('Nidoqueen')
   })
 
-  it.only('after going to page 2, user selects Nidoqueen and should see their details', () => {
+  it('after going to page 2, user selects Nidoqueen and should see their details', () => {
     cy.visit('http://localhost:5173/pokemons?page=1')
     cy.get('[data-cy="pokemon-list"]').should('be.visible')
     cy.get('[data-cy="next-button-option"]').click()
