@@ -24,6 +24,12 @@ const StyledListItem = styled.li`
   padding: 0;
 `;
 
+const StyledContainer = styled(FlexContainer)`
+@media (max-width: 480px) {
+  width: 90%;
+}
+`;
+
 const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }) => {
   return (
     <ComponentContainer
@@ -31,9 +37,10 @@ const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }
       padding='20px'
       margin='20px 0'
       bgColor='#495057'
+      resDirection='column'
       borderColor={theme.colors.darkBgColor}
     >
-      <FlexContainer width='50%' direction='column'>
+      <StyledContainer width='50%' direction='column'>
         <Typography
           color='#fff'
           fontSize='24px'
@@ -45,8 +52,8 @@ const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }
           Base Experience
         </Typography>
         <Typography color='#fff' fontSize='20px'>{baseExperience}</Typography>
-      </FlexContainer>
-      <FlexContainer width='50%' direction='column'>
+      </StyledContainer>
+      <StyledContainer width='50%' direction='column'>
         <Typography color='#fff' fontSize='24px' fontWeight={700} textAlign='center' margin='10px 0'>
           Stats
         </Typography>
@@ -57,7 +64,7 @@ const PokemonStats: React.FC<PokemonStatsProps> = ({ statsList, baseExperience }
             </StyledListItem>
           ))}
         </StyledList>
-      </FlexContainer>
+      </StyledContainer>
     </ComponentContainer>
   );
 };
