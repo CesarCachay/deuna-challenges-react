@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Navbar } from './components/molecules';
-import { About, Home } from './components/layout';
-import { PokemonDetail } from './components/organisms';
 import theme from './utils/theme';
+const LazyHome = lazy(() => import('@/components/layout/Home'));
+const LazyAbout = lazy(() => import('@/components/layout/About'));
+const LazyDetailPage = lazy(() => import('@/components/layout/PokemonDetail'));
 
 const App: React.FC = () => {
   const GlobalStyle = createGlobalStyle`
@@ -24,15 +25,17 @@ const App: React.FC = () => {
         <GlobalStyle />
         <Navbar />
         <ThemeProvider theme={theme}>
-          <Routes>
-            <Route
-              path="*"
-              element={<Navigate to="/pokemons?page=1" replace />}
-            />
-            <Route path='/pokemons' element={<Home />} />
-            <Route path={`/pokemon/:id`} element={<PokemonDetail />} />
-            <Route path='/about' element={<About path='/about' />} />
-          </Routes>
+          <Suspense fallback={<div>Loading components ...</div>}>
+            <Routes>
+              <Route
+                path="*"
+                element={<Navigate to="/pokemons?page=1" replace />}
+              />
+              <Route path='/pokemons' element={<LazyHome />} />
+              <Route path={`/pokemon/:id`} element={<LazyDetailPage />} />
+              <Route path='/about' element={<LazyAbout path='/about' />} />
+            </Routes>
+          </Suspense>
         </ThemeProvider>
       </BrowserRouter>
     </React.Fragment>
