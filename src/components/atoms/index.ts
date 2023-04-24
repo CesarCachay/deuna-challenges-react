@@ -4,5 +4,6 @@ import FlexContainer from './FlexContainer';
 import Typography from './Typography';
 import Spinner from './Spinner';
 import Pill from './Pill';
+import Input from './Input';
 
-export { Button, Card, FlexContainer, Typography, Spinner, Pill };
+export { Button, Card, FlexContainer, Typography, Spinner, Pill, Input };
